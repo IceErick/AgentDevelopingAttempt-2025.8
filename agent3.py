@@ -1,13 +1,16 @@
 import os
 from typing import Annotated, Sequence, TypedDict
-from langchain_core.messages import BaseMessage # The foundational class for all message types in LangGraph
-from langchain_core.messages import ToolMessage # Passes data back to LLM after it calls a tool such as the content and the tool_call_id
-from langchain_core.messages import SystemMessage # Message for providing instructions to the LLM
+from langchain_core.messages import BaseMessage
+from langchain_core.messages import ToolMessage
+from langchain_core.messages import SystemMessage
 from langchain_openai import ChatOpenAI
 from langchain_core.tools import tool
 from langgraph.graph.message import add_messages
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Annotated - provides additional context without affecting the type itself
 
@@ -25,6 +28,6 @@ tools = [add]
 
 model = ChatOpenAI(
     model="deepseek-chat",
-    api_key=os.getenv("DEEPSEEK_API_KEY", "sk-287fcf40006942f1a668ef98849dab6f"),
+    api_key=os.getenv("DEEPSEEK_API_KEY"),
     base_url="https://api.deepseek.com"
 )

@@ -1,9 +1,9 @@
-from nt import error
+import os
 from typing import TypedDict, List
 from langchain_core.messages import HumanMessage
 from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, START, END
-from dotenv import load_dotenv # used to store secret stuff like API key and so on
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -11,9 +11,9 @@ class AgentState(TypedDict):
     messages: List[HumanMessage]
 
 llm = ChatOpenAI(
-    model = "deepseek-chat",
-    api_key = 'sk-287fcf40006942f1a668ef98849dab6f',
-    base_url = 'https://api.deepseek.com'
+    model="deepseek-chat",
+    api_key=os.getenv("DEEPSEEK_API_KEY"),
+    base_url="https://api.deepseek.com"
 )
 
 def process(state: AgentState) -> AgentState:

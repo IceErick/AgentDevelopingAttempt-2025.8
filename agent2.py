@@ -3,6 +3,9 @@ from typing import TypedDict, List, Union
 from langgraph.graph import StateGraph, START, END
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class AgentState(TypedDict):
@@ -10,7 +13,7 @@ class AgentState(TypedDict):
 
 llm = ChatOpenAI(
     model="deepseek-chat",
-    api_key=os.getenv("DEEPSEEK_API_KEY", "sk-287fcf40006942f1a668ef98849dab6f"),
+    api_key=os.getenv("DEEPSEEK_API_KEY"),
     base_url="https://api.deepseek.com"
 )
 
