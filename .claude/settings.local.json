@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip show:*)",
+      "Bash(pip install:*)",
+      "Bash(c:/Python313/python.exe -m pip install:*)",
+      "mcp__ide__executeCode",
+      "mcp__ide__getDiagnostics",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": []
+  }
+}
